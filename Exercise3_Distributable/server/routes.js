@@ -25,13 +25,12 @@ function getAllPeople(req, res) {
 /* ---- Part 2 (FindFriends) ---- */
 function getFriends(req, res) {
   var inputLogin = req.params.login;
-
+  
   // TODO: (3) - Edit query below
   var query = `
-    <INSERT QUERY HERE, using inputLogin>;
-    SELECT Friends.login as login, Person.name as name
+    SELECT Person.name as name, Friends.friend as login
     FROM Friends JOIN Person ON Friends.login = Person.login
-    WHERE Friends.login = inputLogin
+    WHERE Friends.login = '${inputLogin}';
   `;
   connection.query(query, function(err, rows, fields) {
     if (err) console.log(err);

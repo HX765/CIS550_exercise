@@ -23,13 +23,13 @@ export default class FindFriends extends React.Component {
 			login: e.target.value
 		});
 	}
-	
+
 	submitLogin() {
 		/* ---- Part 2 (FindFriends) ---- */
 		// TODO: (4) - Complete the fetch for this function
 		// Hint: Name of login submitted is contained in `this.state.login`.
-	
-		fetch("<TODO>",
+
+		fetch("http://localhost:8081/friends/:login",
 		{
 			method: "GET"
 		}).then(res => {
@@ -38,7 +38,7 @@ export default class FindFriends extends React.Component {
 			console.log(err);
 		}).then(friendsList => {
 			console.log(friendsList); //displays your JSON object in the console
-			let friendsDivs = friendsList.map((friend, i) => 
+			let friendsDivs = friendsList.map((friend, i) =>
 				/* ---- Part 2 (FindFriends) ---- */
 				// TODO: (6) - Complete the HTML for this map function
 				<div>
@@ -52,7 +52,7 @@ export default class FindFriends extends React.Component {
 		});
 	}
 
-	
+
 	render() {
 
 		return (
@@ -67,7 +67,7 @@ export default class FindFriends extends React.Component {
 			    			<input type='text' placeholder="awest@gmail.com" value={this.state.login} onChange={this.handleLoginChange} id="movieName" className="login-input"/>
 							{/* ---- Part 2 (FindFriends) ---- */}
 							{/* TODO: (5) - Edit button element below */}
-							<button id="submitMovieBtn" className="submit-btn">Submit</button>
+							<button id="submitMovieBtn" className="submit-btn" onClick={this.submitLogin}>Submit</button>
 			    		</div>
 			    		<div className="header-container">
 			    			<div className="headers">
